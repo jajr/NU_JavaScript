@@ -4,6 +4,9 @@ var operacion;
 var decimal="N";
 var negativo="N";
 var largo=0;
+var nuevoOperando="N";
+
+
 
 
 var Calculadora = {
@@ -41,6 +44,7 @@ var Calculadora = {
       }
 
       uno.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "1";
          }
@@ -53,6 +57,7 @@ var Calculadora = {
 
 
       dos.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "2";
          }
@@ -61,6 +66,7 @@ var Calculadora = {
          }
       }
       tres.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "3";
          }
@@ -69,6 +75,7 @@ var Calculadora = {
          }
       }
       cuatro.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "4";
          }
@@ -77,6 +84,7 @@ var Calculadora = {
          }
       }
       cinco.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "5";
          }
@@ -85,6 +93,7 @@ var Calculadora = {
          }
       }
       seis.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "6";
          }
@@ -93,6 +102,7 @@ var Calculadora = {
          }
       }
       siete.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "7";
          }
@@ -101,6 +111,7 @@ var Calculadora = {
          }
       }
       ocho.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "8";
          }
@@ -109,6 +120,7 @@ var Calculadora = {
          }
       }
       nueve.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "9";
          }
@@ -117,6 +129,7 @@ var Calculadora = {
          }
       }
       cero.onclick = function(e){
+        nuevoOperando="S";
        if (resultado.textContent == "0" ) {
            resultado.textContent = "0";
          }
@@ -129,35 +142,44 @@ var Calculadora = {
      resultado.textContent = "0";
      largo=0;
      decimal="N";
+     nuevoOperando="N";
     }
     suma.onclick = function(e){
     operandoa = resultado.textContent;
     operacion = "+";
     decimal="N";
+    nuevoOperando="N";
     Calculadora.limpiar(resultado);
     }
     resta.onclick = function(e){
     operandoa = resultado.textContent;
     operacion = "-";
     decimal="N";
+    nuevoOperando="N";
     Calculadora.limpiar(resultado);
     }
     multiplicacion.onclick = function(e){
     operandoa = resultado.textContent;
     operacion = "*";
     decimal="N";
+    nuevoOperando="N";
     Calculadora.limpiar(resultado);
     }
     division.onclick = function(e){
     operandoa = resultado.textContent;
     operacion = "/";
     decimal="N";
+    nuevoOperando="N";
     Calculadora.limpiar(resultado);
     }
 
     igual.onclick = function(e){
-    operandob = resultado.textContent;
-    Calculadora.resolver(resultado);
+      if (nuevoOperando=="S") {
+        operandob = resultado.textContent;
+        nuevoOperando="N";
+      };
+      Calculadora.resolver(resultado);
+      operandoa= resultado.textContent;
     }
     sign.onclick = function(e){
       if (resultado.textContent != "0" ) {
@@ -219,6 +241,5 @@ var Calculadora = {
   	 	resultado.textContent = cadena;
   }
 }
-
 
 Calculadora.init();
